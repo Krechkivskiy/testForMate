@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class CounterOfFrequency {
     public static void counterOfFrequency(String string) {
-        Arrays.stream(string.split("[^\\p{L}\\p{Digit}_]+"))
+        Arrays.stream(string.toLowerCase().split("[^\\p{L}\\p{Digit}_]+"))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
