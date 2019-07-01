@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class MailService<T> implements Consumer<Information<T>> {
         if (myMap.containsKey(tInformation.getTo())) {
             myMap.get(tInformation.getTo()).add((T) tInformation.getContent());
         } else {
-            List<T> myList = new ArrayList<>();
+            List<T> myList =  Collections.emptyList();
             myList.add((T) tInformation.getContent());
             myMap.put(tInformation.getTo(), myList);
 
