@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class MailService<T> implements Consumer<Information<T>> {
-    Map<String, List<T>> myMap = new HashMap() {
+    private Map<String, List<T>> myMap = new HashMap() {
         @Override
         public Object get(Object key) {
             List defaultLst = new ArrayList();
