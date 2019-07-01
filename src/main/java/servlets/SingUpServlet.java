@@ -1,3 +1,4 @@
+
 package servlets;
 
 import accounts.AccountService;
@@ -10,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class SingUpServlet extends HttpServlet {
-    AccountService accountService;
+    private AccountService accountService;
 
     public SingUpServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        accountService.addNewUser(new UserProfile(req.getParameter("login"), req.getParameter("password"), "none"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        accountService.addNewUser(new UserProfile(request.getParameter("login"), request.getParameter("password"), "none"));
     }
 }
