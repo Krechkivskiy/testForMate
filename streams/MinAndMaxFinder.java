@@ -11,11 +11,13 @@ public class MinAndMaxFinder {
             Stream<? extends T> stream,
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer) {
-        List<? extends T> collect = stream.sorted(order).collect(Collectors.toList());
-        if (collect.isEmpty()) {
-            minMaxConsumer.accept(null, null);
+        List<T> list = stream.collect(Collectors.toList());
+        T min = Collections.min(list, order);
+        T max = Collections.max(list, order);
+        if (!list.isEmpty()) {
+            minMaxConsumer.accept(min, max);
         } else {
-            minMaxConsumer.accept(collect.get(0), collect.get(collect.size() - 1));
+            minMaxConsumer.accept(null, null);
         }
     }
 }
