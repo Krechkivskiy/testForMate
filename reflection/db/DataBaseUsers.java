@@ -8,5 +8,5 @@ import java.util.List;
 
 @Dao
 public class DataBaseUsers {
-    public static final List<User> userDB = new ArrayList<>();
+     public static final List<User> USERS = new ArrayList<>();
 }
