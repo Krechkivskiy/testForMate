@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SIngInServlet extends HttpServlet {
-    AccountService myAccountService;
+public class SingInServlet extends HttpServlet {
+    private AccountService myAccountService;
 
-    public SIngInServlet(AccountService myAccountService) {
+    public SingInServlet(AccountService myAccountService) {
         this.myAccountService = myAccountService;
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (myAccountService.getUserByLogin(req.getParameter("login"))!=null) {
-            resp.setStatus(200);
-            resp.getWriter().write("Authorized: "+req.getParameter("login"));
+        if (myAccountService.getUserByLogin(req.getParameter("login")) != null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.getWriter().write("Authorized: " + req.getParameter("login"));
         } else {
             resp.setStatus(401);
             resp.getWriter().write("Unauthorized");
