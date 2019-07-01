@@ -1,8 +1,8 @@
 
 public abstract class Information<T> {
-    String from;
-    String to;
-    T context;
+    private String from;
+    private String to;
+    private T context;
 
     public Information(String from, String to, T context) {
         this.context = context;
@@ -22,4 +22,3 @@ public abstract class Information<T> {
         return context;
     }
 }
-
