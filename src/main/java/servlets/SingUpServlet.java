@@ -18,7 +18,8 @@ public class SingUpServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         accountService.addNewUser(new UserProfile(request.getParameter("login"), request.getParameter("password"), "none"));
     }
 }
