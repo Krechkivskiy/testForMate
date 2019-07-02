@@ -1,6 +1,5 @@
 package servlets;
 
-
 import accounts.AccountService;
 
 import javax.servlet.ServletException;
@@ -20,10 +19,10 @@ public class SingInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (myAccountService.getUserByLogin(req.getParameter("login")) != null) {
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.setStatus(HttpServletResponse.SC_OK);
             resp.getWriter().write("Authorized: " + req.getParameter("login"));
         } else {
-            resp.setStatus(401);
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             resp.getWriter().write("Unauthorized");
         }
     }
