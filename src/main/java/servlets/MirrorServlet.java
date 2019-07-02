@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class MirrorServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String text = request.getParameter("key");
-        System.out.println(text);
         response.getWriter().println(text);
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
