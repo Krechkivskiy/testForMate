@@ -3,7 +3,6 @@ package main;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
 import servlets.SingInServlet;
 
 public class Main {
