@@ -1,18 +1,23 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
+    @Column
     private String login;
+    @Column
     private String password;
-    private String email = "123misha@gmail.com";
 
     public UserModel() {
     }
@@ -30,7 +35,11 @@ public class UserModel {
         return password;
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
