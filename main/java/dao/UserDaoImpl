@@ -1,0 +1,32 @@
+package dao;
+
+import db.DataBaceConnetcion;
+import model.UserModel;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+public class UserDaoImpl implements UserDao {
+    private EntityManagerFactory connection;
+
+    public UserDaoImpl() {
+        connection = DataBaceConnetcion.getConnection();
+    }
+
+    @Override
+    public void addUser(UserModel user) {
+        EntityManager entityManager = connection.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
+        entityManager.getTransaction().rollback();
+    }
+
+    @Override
+    public boolean checkIsPresent(String login) {
+        return connection
+                .createEntityManager()
+                .createQuery("SELECT u FROM  u WHERE  u.login =:login")
+                .setParameter("login", login).getResultList().get(0).equals(null);
+    }
+}
