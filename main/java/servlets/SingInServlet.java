@@ -1,7 +1,7 @@
 package servlets;
 
 import dao.UserDao;
-import model.UserModel;
+import dao.UserDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,15 +11,15 @@ import java.io.IOException;
 
 public class SingInServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDao userDao = new UserDao();
-        UserModel userModel = userDao.checkIsPresent(request.getParameter("login"));
-
-        if (userModel!=null) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UserDao userDao = new UserDaoImpl();
+        boolean resultOfChecking = userDao.checkIsPresent(request.getParameter("login"));
+        if (resultOfChecking) {
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().write("Authorized: "+userModel.getLogin());
+            response.getWriter().write("Authorized: " + request.getParameter("login"));
         } else {
-            response.setStatus(401);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Unauthorized");
         }
     }
