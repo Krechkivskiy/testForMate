@@ -12,7 +12,8 @@ public class UserDaoImpl implements UserDao {
     public UserDaoImpl() {
         connection = DataBaceConnetcion.getConnection();
     }
-   @Override
+
+    @Override
     public void addUser(UserModel user) {
         EntityManager entityManager = connection.createEntityManager();
         entityManager.getTransaction().begin();
@@ -20,11 +21,12 @@ public class UserDaoImpl implements UserDao {
         entityManager.getTransaction().commit();
         entityManager.getTransaction().rollback();
     }
-@Override
+
+    @Override
     public boolean checkIsPresent(String login) {
         return connection
                 .createEntityManager()
-                .createQuery("select u from UserModel u where  u.login =:login")
-                .setParameter("login",login).getResultList().get(0).equals(null);
+                .createQuery("SELECT u FROM  u WHERE  u.login =:login")
+                .setParameter("login", login).getResultList().get(0).equals(null);
     }
 }
