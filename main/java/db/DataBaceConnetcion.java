@@ -4,9 +4,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DataBaceConnetcion {
-    private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("test");
+    private static final String TEST = "tesr";
+    private static EntityManagerFactory factory;
+
+    private DataBaceConnetcion() {
+    }
 
     public static EntityManagerFactory getConnection() {
-        return FACTORY;
+        if (factory != null) {
+            factory = Persistence.createEntityManagerFactory(TEST);
+        }
+        return factory;
     }
 }
