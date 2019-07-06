@@ -30,6 +30,6 @@ public class SaveProductServlet extends HttpServlet {
         } catch (NumberFormatException nfe) {
             product.setPrice(0.0);
         }
-        productDB.forEach(myProduct -> System.out.println(product));
+        productDB.add(product);
     }
 }
